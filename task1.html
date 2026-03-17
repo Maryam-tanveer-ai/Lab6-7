@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum Program</title>
+</head>
+<body>
+
+<h2>Enter numbers (0 to stop)</h2>
+
+<button onclick="startInput()">Start Input</button>
+
+<p id="result"></p>
+
+<script>
+function startInput() {
+    let sum = 0;
+
+    while (true) {
+        let input = prompt("Enter a number (0 to stop):");
+        let number = Number(input);
+
+        if (number === 0) {
+            break;
+        }
+
+        sum += number;
+    }
+
+    document.getElementById("result").innerHTML = "Total Sum: " + sum;
+}
+</script>
+
+</body>
+</html>

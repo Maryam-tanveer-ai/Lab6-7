@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Quiz</title>
+</head>
+<body>
+
+<button onclick="startQuiz()">Start JavaScript Quiz</button>
+
+<script>
+function startQuiz() {
+    let score = 0;
+
+    // Question 1
+    let q1 = prompt("1. What is JavaScript?\n(a) Programming Language\n(b) Database\n(c) Operating System");
+    if (q1.toLowerCase() === "a") {
+        alert("Correct!");
+        score++;
+    } else {
+        alert("Wrong!");
+    }
+
+    // Question 2
+    let q2 = prompt("2. Which keyword is used to declare a variable?\n(a) var\n(b) int\n(c) string");
+    if (q2.toLowerCase() === "a") {
+        alert("Correct!");
+        score++;
+    } else {
+        alert("Wrong!");
+    }
+
+    // Question 3
+    let q3 = prompt("3. Which symbol is used for comments in JS?\n(a) //\n(b) <!-- -->\n(c) ##");
+    if (q3 === "//") {
+        alert("Correct!");
+        score++;
+    } else {
+        alert("Wrong!");
+    }
+
+    // Question 4
+    let q4 = prompt("4. Which function is used to display output in browser?\n(a) print()\n(b) alert()\n(c) echo()");
+    if (q4.toLowerCase() === "b") {
+        alert("Correct!");
+        score++;
+    } else {
+        alert("Wrong!");
+    }
+
+    // Question 5
+    let q5 = prompt("5. Which company developed JavaScript?\n(a) Microsoft\n(b) Netscape\n(c) Google");
+    if (q5.toLowerCase() === "b") {
+        alert("Correct!");
+        score++;
+    } else {
+        alert("Wrong!");
+    }
+
+    // Final Score
+    alert("Quiz Finished!\nYour Score: " + score + "/5");
+}
+</script>
+
+</body>
+</html>
