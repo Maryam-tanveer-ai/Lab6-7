@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Demonstration of setTimeout() Method</h3>
+
+<p>Click the button to display a message after 3 seconds.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(MsgFunc, 3000);
+}
+
+function MsgFunc() {
+    document.getElementById("demo").innerHTML = "Hello! This message appeared after 3 seconds.";
+}
+</script>
+
+</body>
+</html>
