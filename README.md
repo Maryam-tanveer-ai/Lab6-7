@@ -11,4 +11,4 @@
 | [Task2](task2.html) | [Task2](images/task2.png) | [Open Form](https://maryam-tanveer-ai.github.io/Lab6-7/task2.html) |
 | [Task3](task3.html) | [Task3](images/task3.png) | [Open Form](https://maryam-tanveer-ai.github.io/Lab6-7/task3.html) |
 Lab 7
-| [Activity1](activity1.html) | [Activity1](images/activity1.png) | [Open Form](https://maryam-tanveer-ai.github.io/Lab6-7/activity1.html) |
+| [ac1](ac1.html) | [ac1](images/ac1.png) | [Open Form](https://maryam-tanveer-ai.github.io/Lab6-7/ac1.html) |
