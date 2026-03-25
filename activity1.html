@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h3>A demonstration of how to access a Number field</h3>
-<input type="number" id="myNumber" value="2">
-<p>Click the button to get the number of the number field.</p>
+
+<h3>Demonstration of setTimeout() Method</h3>
+
+<p>Click the button to display a message after 3 seconds.</p>
+
 <button onclick="myFunction()">Try it</button>
+
 <p id="demo"></p>
+
 <script>
+var myVar;
+
 function myFunction() {
- var x = document.getElementById("myNumber").value;
- document.getElementById("demo").innerHTML = x;
+    myVar = setTimeout(MsgFunc, 3000);
+}
+
+function MsgFunc() {
+    document.getElementById("demo").innerHTML = "Hello! This message appeared after 3 seconds.";
 }
 </script>
+
 </body>
 </html>
