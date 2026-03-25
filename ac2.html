@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Demonstration of clearTimeout() Method</h3>
+
+<p>Click "Start" to display a message after 3 seconds.</p>
+<p>Click "Stop" to prevent the message from appearing.</p>
+
+<button onclick="startFunction()">Start</button>
+<button onclick="stopFunction()">Stop</button>
+
+<p id="demo"></p>
+
+<script>
+var myVar;
+
+function startFunction() {
+    myVar = setTimeout(showMessage, 3000);
+}
+
+function showMessage() {
+    document.getElementById("demo").innerHTML = "Hello! This message appeared after 3 seconds.";
+}
+
+function stopFunction() {
+    clearTimeout(myVar);
+    document.getElementById("demo").innerHTML = "Timer stopped before execution.";
+}
+</script>
+
+</body>
+</html>

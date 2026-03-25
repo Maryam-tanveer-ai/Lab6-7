@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animal History</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  /* Slider transition effect */
+  #sliderImage {
+    transition: opacity 0.6s ease-in-out;
+  }
+
+  /* Dot styling */
+  .dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+
+  .dot.active {
+    background: #000;
+  }
+
+  /* Image hover effect */
+  .animal-img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .animal-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+
+<body class="bg-light">
+
+<!-- ===================== BANNER + SLIDER ===================== -->
+<div class="container-fluid p-0">
+  <div class="position-relative text-center text-white">
+    <img id="sliderImage" class="img-fluid w-100" style="height:350px; object-fit:cover;">
+    
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <h2 id="sliderTitle" class="fw-bold fs-1"></h2>
+      <p id="sliderDesc" class="fs-5"></p>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="text-center my-2">
+    <button class="btn btn-outline-dark btn-sm mx-1" onclick="playSlider()">Play</button>
+    <button class="btn btn-outline-dark btn-sm mx-1" onclick="pauseSlider()">Pause</button>
+  </div>
+
+  <!-- Dots -->
+  <div class="d-flex justify-content-center mt-2" id="dotsContainer"></div>
+</div>
+
+<!-- ===================== ANIMAL SECTIONS ===================== -->
+<div class="container my-5">
+
+  <!-- Lion -->
+  <div class="row align-items-center mb-5">
+    <div class="col-12 col-md-6 order-md-1">
+      <!-- Lion image similar to Elephant layout -->
+      <img src="https://images.unsplash.com/photo-1549366021-9f761d040a94"
+           class="img-fluid rounded shadow animal-img" alt="Lion">
+    </div>
+
+    <div class="col-12 col-md-6 order-md-2 mt-3 mt-md-0">
+      <h2>Lion</h2>
+      <p class="d-block d-md-none">
+        Lions are powerful wild cats known as kings.
+      </p>
+      <p class="d-none d-md-block">
+        Lions are known as the “King of the Jungle”. They are powerful predators
+        found mainly in Africa. Lions live in groups called prides and show strong
+        social behavior. They play a major role in maintaining the balance of the ecosystem.
+      </p>
+    </div>
+  </div>
+
+  <!-- Elephant (Reversed) -->
+  <div class="row align-items-center mb-5">
+    <div class="col-12 col-md-6 order-md-2">
+      <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46"
+           class="img-fluid rounded shadow animal-img" alt="Elephant">
+    </div>
+
+    <div class="col-12 col-md-6 order-md-1 mt-3 mt-md-0">
+      <h2>Elephant</h2>
+      <p class="d-block d-md-none">
+        Elephants are the largest land animals.
+      </p>
+      <p class="d-none d-md-block">
+        Elephants are the largest land animals on Earth. They are highly intelligent,
+        emotional, and social creatures. Found in Africa and Asia, they are known for
+        their strong memory, long trunks, and family bonding behavior.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tiger -->
+  <div class="row align-items-center mb-5">
+    <div class="col-12 col-md-6 order-md-1">
+      <!-- Tiger image similar to Elephant layout -->
+      <img src="https://images.unsplash.com/photo-1549488344-cbb6c34cf08b"
+           class="img-fluid rounded shadow animal-img" alt="Tiger">
+    </div>
+
+    <div class="col-12 col-md-6 order-md-2 mt-3 mt-md-0">
+      <h2>Tiger</h2>
+      <p class="d-block d-md-none">
+        Tigers are strong striped big cats.
+      </p>
+      <p class="d-none d-md-block">
+        Tigers are the largest members of the cat family. They are known for their
+        orange coats with black stripes. Tigers are solitary hunters and mainly live
+        in Asia. They are powerful, fast, and highly skilled predators.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== JAVASCRIPT SLIDER ===================== -->
+<script>
+const slides = [
+  {
+    img: "https://images.unsplash.com/photo-1549366021-9f761d040a94",
+    title: "Lion",
+    desc: "King of the Jungle"
+  },
+  {
+    img: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46",
+    title: "Elephant",
+    desc: "Largest land animal"
+  },
+  {
+    img: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b",
+    title: "Tiger",
+    desc: "Powerful striped predator"
+  }
+];
+
+let index = 0;
+let interval;
+
+// Create dots dynamically
+function createDots() {
+  const container = document.getElementById("dotsContainer");
+  slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.className = "dot";
+    dot.onclick = () => goToSlide(i);
+    container.appendChild(dot);
+  });
+}
+
+// Update slider content
+function updateSlider() {
+  const sliderImage = document.getElementById("sliderImage");
+  sliderImage.style.opacity = 0; // fade effect
+  setTimeout(() => {
+    sliderImage.src = slides[index].img;
+    document.getElementById("sliderTitle").innerText = slides[index].title;
+    document.getElementById("sliderDesc").innerText = slides[index].desc;
+    sliderImage.style.opacity = 1;
+  }, 200);
+
+  const dots = document.querySelectorAll("#dotsContainer .dot");
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[index].classList.add("active");
+}
+
+// Next slide
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  updateSlider();
+}
+
+// Play slider
+function playSlider() {
+  if (!interval) {
+    interval = setInterval(nextSlide, 2500);
+  }
+}
+
+// Pause slider
+function pauseSlider() {
+  clearInterval(interval);
+  interval = null;
+}
+
+// Go to specific slide
+function goToSlide(i) {
+  index = i;
+  updateSlider();
+}
+
+// Pause on hover
+document.getElementById("sliderImage").addEventListener("mouseover", pauseSlider);
+document.getElementById("sliderImage").addEventListener("mouseout", playSlider);
+
+// Initialize
+createDots();
+updateSlider();
+playSlider();
+</script>
+
+</body>
+</html>
